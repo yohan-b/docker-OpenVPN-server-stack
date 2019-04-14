@@ -1,0 +1,19 @@
+version: "2.1"
+ 
+services:
+
+  openvpn-server:
+    image: openvpn-server
+    ports:
+      - 1195:1194/udp
+    volumes:
+      - ./conf/keys:/etc/openvpn/server/keys
+      - ./conf/ccd:/etc/openvpn/server/ccd
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun
+    restart: always
+    #entrypoint: /bin/bash
+    #privileged: true
+    #network_mode: "host"
