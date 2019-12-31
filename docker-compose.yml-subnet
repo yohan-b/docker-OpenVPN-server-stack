@@ -18,4 +18,4 @@ services:
     restart: unless-stopped
     #entrypoint: /bin/bash
     #privileged: true
-    network_mode: "host"
+    #network_mode: "host"

@@ -1,3 +1,11 @@
+Certificates creation:
+./create_conf.sh
+
+Then store the directory conf/ in the encrypted archive for secrets.
+
+Two docker-compose files are provided: one in host mode and one for regular docker network.
+
+References:
 https://stackoverflow.com/questions/17089889/openssl-x509v3-extended-key-usage
 https://forums.openvpn.net/viewtopic.php?t=7484
 https://serverfault.com/questions/785108/why-does-openvpn-give-the-error-unsupported-certificate-purpose-for-an-interm
