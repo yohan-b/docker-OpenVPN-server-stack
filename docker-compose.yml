@@ -4,7 +4,7 @@ services:
 
   openvpn-server:
     image: openvpn-server:$VERSION_OPENVPN_SERVER
-    build: "https://git.scimetis.net/yohan/docker-OpenVPN-server.git"
+    #build: "https://git.scimetis.net/yohan/docker-OpenVPN-server.git"
     ports:
       - 1194:1194/udp
     volumes:

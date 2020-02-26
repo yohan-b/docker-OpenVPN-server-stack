@@ -13,7 +13,7 @@ done
 
 if [ $COUNT -eq 0 ]
 then
-    sudo docker-compose stop
+    sudo docker-compose down
     exit 0
 else
     echo "ERROR: Some containers are still running"

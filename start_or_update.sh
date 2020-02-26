@@ -19,6 +19,12 @@ sudo chown -R root. conf server.conf
 
 # --force-recreate is used to recreate container when crontab file has changed
 unset VERSION_OPENVPN_SERVER
-VERSION_OPENVPN_SERVER=$(git ls-remote https://${GIT_SERVER}/yohan/docker-OpenVPN-server.git| head -1 | cut -f 1|cut -c -10) \
- sudo -E bash -c 'docker-compose up -d --force-recreate'
+export VERSION_OPENVPN_SERVER=$(git ls-remote https://${GIT_SERVER}/yohan/docker-OpenVPN-server.git| head -1 | cut -f 1|cut -c -10)
 
+mkdir -p ~/build
+git clone https://git.scimetis.net/yohan/docker-OpenVPN-server.git ~/build/docker-OpenVPN-server
+sudo docker build -t openvpn-server:$VERSION_OPENVPN_SERVER ~/build/docker-OpenVPN-server
+
+sudo -E bash -c 'docker-compose up -d --force-recreate'
+
+rm -rf ~/build
