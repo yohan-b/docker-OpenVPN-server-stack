@@ -1,7 +1,7 @@
-Certificates creation:
-./create_conf.sh
+The file ca.key can only be found in the encrypted archive for secrets.
 
-Then store the directory conf/ in the encrypted archive for secrets.
+Certificates are created as below and the directory conf is stored in the encrypted archive for secrets:
+./create_conf.sh
 
 Two docker-compose files are provided: one in host mode and one for regular docker network.
 

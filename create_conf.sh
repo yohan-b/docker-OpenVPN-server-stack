@@ -13,9 +13,11 @@ openssl x509 -req -days 3650 -CA ca.crt -CAkey ca.key -CAcreateserial -extension
 openssl req -nodes -new -keyout client2.key -out client2.csr -subj "/C=FR/O=scimetis/CN=serveur-appart.scimetis.net" -reqexts usr_cert -config ../openssl.conf
 openssl x509 -req -days 3650 -CA ca.crt -CAkey ca.key -CAcreateserial -extensions usr_cert -extfile ../openssl.conf -in client2.csr -out client2.crt
 
-NAME=modane
-openssl req -nodes -new -keyout ${NAME}.key -out ${NAME}.csr -subj "/C=FR/O=scimetis/CN=${NAME}.scimetis.net" -reqexts usr_cert -config ../openssl.conf
-openssl x509 -req -days 3650 -CA ca.crt -CAkey ca.key -CAcreateserial -extensions usr_cert -extfile ../openssl.conf -in ${NAME}.csr -out ${NAME}.crt
+for NAME in modane Y10
+do
+  openssl req -nodes -new -keyout ${NAME}.key -out ${NAME}.csr -subj "/C=FR/O=scimetis/CN=${NAME}.scimetis.net" -reqexts usr_cert -config ../openssl.conf
+  openssl x509 -req -days 3650 -CA ca.crt -CAkey ca.key -CAcreateserial -extensions usr_cert -extfile ../openssl.conf -in ${NAME}.csr -out ${NAME}.crt
+done
 
 chcon -R -u system_u -r object_r -t svirt_sandbox_file_t ./
 mkdir keys
